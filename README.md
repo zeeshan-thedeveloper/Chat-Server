@@ -1,2 +1,2 @@
-# Express-js
-This template will be usefull to create an express js application.
+# Chat-server
+This will be used to integrate an chat service for customer care.
