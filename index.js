@@ -1,17 +1,18 @@
 const express = require('express');
 const path = require("path");
 const app = express();
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+const http = require('http')
+const server = http.createServer(app)
+const socketio= require('socket.io')
+const io= socketio(server)
 app.use(express.static(path.join(__dirname,'public')))
 
 const port = process.env.PORT || "3000";
 
-var sampleRoute = require('./routes/sampleRoute')
-
-app.get("/", (req, res) => {
-    res.status(200).send("This is basic template.");
-});
+// run when client connects
+io.on('connection',socket=>{
+    console.log('new ws conntion')
+})
 
 app.listen(port, () => {
     console.log(`Listening to requests on http://localhost:${port}`);
